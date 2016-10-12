@@ -35,7 +35,6 @@ import org.apache.hadoop.hbase.HRegionInfo;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.KeyValue.Type;
 import org.apache.hadoop.hbase.regionserver.RegionScanner;
-import org.apache.hadoop.hbase.regionserver.ScannerContext;
 import org.apache.kylin.common.util.Bytes;
 import org.apache.kylin.gridtable.StorageSideBehavior;
 import org.apache.kylin.metadata.datatype.LongMutable;
@@ -231,7 +230,7 @@ public class AggregateRegionObserverTest {
         }
 
         @Override
-        public boolean next(List<Cell> result, ScannerContext scannerContext) throws IOException {
+        public boolean next(List<Cell> result, int limit) throws IOException {
             return next(result);
         }
 
@@ -300,11 +299,6 @@ public class AggregateRegionObserverTest {
             return 0;
         }
 
-        @Override
-        public int getBatch() {
-            return 0;
-        }
-
         /*
          * (non-Javadoc)
          * 
@@ -322,7 +316,7 @@ public class AggregateRegionObserverTest {
         }
 
         @Override
-        public boolean nextRaw(List<Cell> list, ScannerContext scannerContext) throws IOException {
+        public boolean nextRaw(List<Cell> list, int limit) throws IOException {
             return false;
         }
 
