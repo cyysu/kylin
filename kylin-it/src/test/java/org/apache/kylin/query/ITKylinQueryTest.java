@@ -189,6 +189,16 @@ public class ITKylinQueryTest extends KylinTestBase {
     }
 
     @Test
+    public void testDateTimeQuery() throws Exception {
+        execAndCompQuery(getQueryFolderPrefix() + "src/test/resources/query/sql_datetime", null, true);
+    }
+    
+    @Test
+    public void testExtendedColumnQuery() throws Exception {
+        execAndCompQuery(getQueryFolderPrefix() + "src/test/resources/query/sql_extended_column", null, true);
+    }
+    
+    @Test
     public void testLikeQuery() throws Exception {
         execAndCompQuery(getQueryFolderPrefix() + "src/test/resources/query/sql_like", null, true);
     }
